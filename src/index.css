@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font faces simulated with Google Fonts fallbacks for web */
+:root {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+  --color-blush: #EED7C8;
+  --color-pink: #EFAAB0;
+  --color-cream: #EED7CB;
+  --color-ivory: #FFF9F5;
+  --color-red: #BE0822;
+  --color-hotpink: #FD9898;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-ivory);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+
+/* Broken heart SVG clip paths */
+.clip-heart-left {
+  clip-path: polygon(0 0, 60% 0, 55% 20%, 65% 45%, 50% 65%, 48% 100%, 0 100%);
+}
+.clip-heart-right {
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 52% 100%, 50% 65%, 35% 45%, 45% 20%);
+}
+
+/* Letter envelope styles */
+.envelope-shadow {
+  box-shadow: 0 20px 60px rgba(190, 8, 34, 0.15), 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Floating petals */
+@keyframes float-petal {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+.petal {
+  position: fixed;
+  pointer-events: none;
+  animation: float-petal linear infinite;
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-ivory); }
+::-webkit-scrollbar-thumb { background: var(--color-pink); border-radius: 2px; }
+
+/* Heart crack animation */
+@keyframes crack-appear {
+  from { stroke-dashoffset: 300; opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+
+.crack-line {
+  stroke-dasharray: 300;
+  animation: crack-appear 0.8s ease-out forwards;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #EFAAB0 0%, #FFF9F5 40%, #EFAAB0 60%, #BE0822 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
